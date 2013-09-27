@@ -21,9 +21,13 @@ function addSlide(data, index){
 //how do i just get a preview for everything without having to customize
 
   //twitter img
-  if(data['provider_name']==="Twitter"){
+  if(data['provider_name']==="Twitter" && data['type'] === "photo"){
    slide_html+="<div id='text'>"+data['description']+"</div>";
    slide_html+="<div id='media'><img src='"+data['url']+"'</div>";
+   interval = 5;
+  }
+  else if(data['provider_name']==="Twitter" && data['type'] === "link"){
+   slide_html+="<div id='text'>"+data['description']+"</div>";
    interval = 5;
   }
   //vine vid
@@ -54,8 +58,18 @@ function addSlide(data, index){
    interval = 5;
   }
 
+  //get random color
+  var color = HSVtoRGB(Math.random(), 1,1);
+  color_str = "rgb("+color['r']+","+color['g']+','+color['b']+")";
+
+ console.log(color_str);
   slide_html+="</div>";
   $("#slides").append(slide_html);
+  $("#text").css("color",color_str);
+
+  var color = HSVtoRGB(Math.random(), 1,1);
+  color_str = "rgb("+color['r']+","+color['g']+','+color['b']+")";
+
   setTimeout(function(){nextSlide()},interval*1000);
 }
 var next;
@@ -84,5 +98,33 @@ function startSlideshow(){
 function nextSlide(){
   showSlide(next);
 }
-//show each one one at a time, jquery animations
 
+/* accepts parameters
+ * h  Object = {h:x, s:y, v:z}
+ * OR
+ * h, s, v
+*/
+function HSVtoRGB(h, s, v) {
+    var r, g, b, i, f, p, q, t;
+    if (h && s === undefined && v === undefined) {
+        s = h.s, v = h.v, h = h.h;
+    }
+    i = Math.floor(h * 6);
+    f = h * 6 - i;
+    p = v * (1 - s);
+    q = v * (1 - f * s);
+    t = v * (1 - (1 - f) * s);
+    switch (i % 6) {
+        case 0: r = v, g = t, b = p; break;
+        case 1: r = q, g = v, b = p; break;
+        case 2: r = p, g = v, b = t; break;
+        case 3: r = p, g = q, b = v; break;
+        case 4: r = t, g = p, b = v; break;
+        case 5: r = v, g = p, b = q; break;
+    }
+    return {
+        r: Math.floor(r * 255),
+        g: Math.floor(g * 255),
+        b: Math.floor(b * 255)
+    };
+}

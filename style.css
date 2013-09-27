@@ -6,26 +6,47 @@
 }
 
 body{
-
-background-color:black;
-overflow:hidden;
+  background-color:#FF00CC;
+  overflow:hidden;
 }
 
 .slide{
- width:100%;
-text-align:center;
+  width:100%;
+  text-align:center;
 }
+
 #media{
-width::50%;
-margin: 0 auto;
-display: inline-block;
+  width::50%;
+  margin: 0 auto;
+  display: inline-block;
 }
 
 #text{
-color:white;
-font-family:"futura";
-position:absolute;
-font-size:100px;
-top:300px;
-text-align:left;
+  color:white;
+  font-family:"futura";
+  position:absolute;
+  font-size:100px;
+  top:300px;
+  text-align:center;
+  width:100%;
+}
+
+#details{
+  position: absolute;
+  text-align: center;
+  top:20px;
+  width:100%;
+  line-height:20px;
+  font-size:25px;
+  font-family:"futura";
+  color:white;
+}
+
+#built a{
+  font-family:"futura";
+  font-size:15px;
+  color:yellow;
+  position:absolute;
+  bottom: 20px;
+  left:10px;
 }
