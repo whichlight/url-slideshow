@@ -47,6 +47,17 @@ body{
   font-size:15px;
   color:yellow;
   position:absolute;
-  bottom: 20px;
+  bottom: 25px;
   left:10px;
+  text-decoration:none;
+}
+
+#embedly a{
+  font-family:"futura";
+  font-size:15px;
+  color:"blue";
+  position:absolute;
+  bottom: 5px;
+  left:10px;
+  text-decoration:none;
 }
