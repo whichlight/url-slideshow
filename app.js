@@ -25,10 +25,12 @@ function addSlide(data, index){
    slide_html+="<div id='text'>"+data['description']+"</div>";
    slide_html+="<div id='media'><img src='"+data['url']+"'</div>";
    interval = 5;
+   if(!data['description']){interval=0;}
   }
   else if(data['provider_name']==="Twitter" && data['type'] === "link"){
    slide_html+="<div id='text'>"+data['description']+"</div>";
    interval = 5;
+   if(!data['description']){interval=0;}
   }
   //vine vid
   else if(data['provider_name']==="Vine"){
@@ -62,7 +64,6 @@ function addSlide(data, index){
   var color = HSVtoRGB(Math.random(), 1,1);
   color_str = "rgb("+color['r']+","+color['g']+','+color['b']+")";
 
- console.log(color_str);
   slide_html+="</div>";
   $("#slides").append(slide_html);
   $("#text").css("color",color_str);
